@@ -32,6 +32,8 @@
 #include "Events.h"
 #include "LEDPin1.h"
 #include "BitIoLdd1.h"
+#include "LEDPin2.h"
+#include "BitIoLdd2.h"
 #include "WAIT1.h"
 #include "CS1.h"
 #include "HF1.h"
@@ -74,7 +76,7 @@ int main(void)
   /*** End of RTOS startup code.  ***/
   /*** Processor Expert end of main routine. DON'T MODIFY THIS CODE!!! ***/
   for(;;){}
-  /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
+  /*** Processsor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
 } /*** End of main routine. DO NOT MODIFY THIS TEXT!!! ***/
 
 /* END main */
