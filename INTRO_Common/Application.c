@@ -121,7 +121,6 @@ void APP_Start(void) {
   vTaskStartScheduler(); /* start the RTOS, create the IDLE task and run my tasks (if any) */
   /* does usually not return! */
 #else
-  LED1_On();
   for(;;) {
 #if PL_CONFIG_HAS_KEYS
     KEY_Scan();
@@ -129,23 +128,14 @@ void APP_Start(void) {
 #if PL_CONFIG_HAS_EVENTS
     EVNT_HandleEvent(APP_EventHandler, TRUE);
 #endif
-    /* LED1_On();
-    LED2_On();
+   LED1_On();
+   LED2_On();
+   LED3_On();
+
     WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
-
-    if(LED2_Get()){
-        	LED3_Neg();
-        }
-    if(LED1_Get()){
-       	LED2_Neg();
-       }
-   // if(LED3_Get()){
-   // 	LED1_Neg();
-   // }
-    WAIT1_Waitms(1000); /* just wait for some arbitrary time .... */
-
+    LED1_Off();
+    LED2_Off();
+    WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
   }
 #endif
 }
-
-
