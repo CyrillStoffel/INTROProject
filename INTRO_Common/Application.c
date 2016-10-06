@@ -135,6 +135,7 @@ void APP_Start(void) {
     WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
     LED1_Off();
     LED2_Off();
+    LED3_Off();
     WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
   }
 #endif
