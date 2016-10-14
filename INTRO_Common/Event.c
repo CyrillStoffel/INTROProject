@@ -85,6 +85,7 @@ void EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent) {
      /* Note: if the callback sets the event, we will get out of the loop.
       * We will catch it by the next iteration.
       */
+
    }
 }
 

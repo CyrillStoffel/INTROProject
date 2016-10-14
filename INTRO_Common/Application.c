@@ -42,21 +42,24 @@
 void APP_EventHandler(EVNT_Handle event) {
   switch(event) {
   case EVNT_STARTUP:
-    LED1_On(); /* just do something */
+    //LED1_On(); /* just do something */
 #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_WELCOME);
 #endif
     break;
   case EVNT_LED_HEARTBEAT:
-    LED1_Neg();
+    //LED1_Neg();
     break;
 
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
-    LED2_Neg();
+    LED2_On();
+    break;
+  case EVNT_SW2_PRESSED:
+	LED2_Off();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
-    SHELL_SendString("SW1 pressed\r\n");
+    // SHELL_SendString("SW1 pressed\r\n");
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
@@ -129,7 +132,10 @@ void APP_Start(void) {
     EVNT_HandleEvent(APP_EventHandler, TRUE);
 #endif
 
-    WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
+    KEY_Scan();
+    EVNT_HandleEvent(APP_EventHandler, TRUE);
+
+    //WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
   }
 #endif
 }
