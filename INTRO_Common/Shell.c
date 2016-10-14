@@ -11,7 +11,9 @@
 #include "Shell.h"
 #include "CLS1.h"
 #include "Application.h"
-#include "FRTOS1.h"
+#if PL_CONFIG_HAS_RTOS
+	#include "FRTOS1.h"
+#endif
 #if PL_CONFIG_HAS_BLUETOOTH
   #include "BT1.h"
 #endif
@@ -160,12 +162,14 @@ void SHELL_SendString(unsigned char *msg) {
  * \param io StdIO handler
  * \return ERR_OK or failure code
  */
+#if PL_CONFIG_HAS_RTOS
 static uint8_t SHELL_PrintHelp(const CLS1_StdIOType *io) {
   CLS1_SendHelpStr("Shell", "Shell commands\r\n", io->stdOut);
   CLS1_SendHelpStr("  help|status", "Print help or status information\r\n", io->stdOut);
   CLS1_SendHelpStr("  val <num>", "Assign number value\r\n", io->stdOut);
   return ERR_OK;
 }
+#endif
 
 /*!
  * \brief Prints the status text to the console
@@ -279,7 +283,9 @@ static void ShellTask(void *pvParameters) {
     }
 #endif /* PL_CONFIG_SQUEUE_SINGLE_CHAR */
 #endif /* PL_CONFIG_HAS_SHELL_QUEUE */
+#if PL_CONFIG_HAS_RTOS
     FRTOS1_vTaskDelay(10/portTICK_PERIOD_MS);
+#endif
   } /* for */
 }
 
