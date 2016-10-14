@@ -3,7 +3,7 @@
   <Header>
     <Name>Remote</Name>
     <SavedBy>Erich Styger Local</SavedBy>
-    <ModificationStamp>6</ModificationStamp>
+    <ModificationStamp>7</ModificationStamp>
     <Date>2016-09-20</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>136</ProjectCompNumb>
+    <ProjectCompNumb>140</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -567,7 +567,7 @@
         <ItemSymbol>Intperiphgrp</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>SharedADC0</ItemSymbol>
@@ -5401,37 +5401,37 @@
       <ItemId17>52</ItemId17>
       <Value17>false</Value17>
       <ItemId18>55</ItemId18>
-      <Value18>false</Value18>
+      <Value18>true</Value18>
       <ItemId19>56</ItemId19>
-      <Value19>false</Value19>
+      <Value19>true</Value19>
       <ItemId20>57</ItemId20>
-      <Value20>false</Value20>
+      <Value20>true</Value20>
       <ItemId21>59</ItemId21>
       <Value21>false</Value21>
       <ItemId22>61</ItemId22>
-      <Value22>false</Value22>
+      <Value22>true</Value22>
       <ItemId23>63</ItemId23>
       <Value23>false</Value23>
       <ItemId24>65</ItemId24>
-      <Value24>false</Value24>
+      <Value24>true</Value24>
       <ItemId25>67</ItemId25>
       <Value25>false</Value25>
       <ItemId26>69</ItemId26>
-      <Value26>false</Value26>
+      <Value26>true</Value26>
       <ItemId27>71</ItemId27>
       <Value27>false</Value27>
       <ItemId28>73</ItemId28>
-      <Value28>false</Value28>
+      <Value28>true</Value28>
       <ItemId29>75</ItemId29>
       <Value29>false</Value29>
       <ItemId30>77</ItemId30>
       <Value30>false</Value30>
       <ItemId31>79</ItemId31>
-      <Value31>false</Value31>
+      <Value31>true</Value31>
       <ItemId32>80</ItemId32>
-      <Value32>false</Value32>
+      <Value32>true</Value32>
       <ItemId33>82</ItemId33>
-      <Value33>false</Value33>
+      <Value33>true</Value33>
       <ItemId34>84</ItemId34>
       <Value34>false</Value34>
       <ItemId35>89</ItemId35>
@@ -19499,7 +19499,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW1</Name>
     <CompNumb>57</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -19712,7 +19712,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -19723,7 +19723,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -19737,10 +19737,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetDir</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19751,7 +19751,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetInput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19762,7 +19762,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetOutput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19781,10 +19781,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>PutVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19792,10 +19792,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>ClrVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19803,10 +19803,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19817,7 +19817,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>NegVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -19827,7 +19827,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -19843,7 +19843,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -20666,7 +20666,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW2</Name>
     <CompNumb>61</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -20879,7 +20879,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -20890,7 +20890,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -20904,10 +20904,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetDir</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20918,7 +20918,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetInput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20929,7 +20929,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetOutput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20948,10 +20948,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>PutVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20959,10 +20959,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>ClrVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20970,10 +20970,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20984,7 +20984,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>NegVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -20994,7 +20994,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -21010,7 +21010,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -21833,7 +21833,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW3</Name>
     <CompNumb>65</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -22046,7 +22046,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -22057,7 +22057,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -22071,10 +22071,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetDir</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22085,7 +22085,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetInput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22096,7 +22096,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetOutput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22115,10 +22115,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>PutVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22126,10 +22126,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>ClrVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22137,10 +22137,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22151,7 +22151,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>NegVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -22161,7 +22161,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -22177,7 +22177,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -23000,7 +23000,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW4</Name>
     <CompNumb>69</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -23213,7 +23213,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -23224,7 +23224,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -23238,10 +23238,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetDir</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23252,7 +23252,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetInput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23263,7 +23263,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetOutput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23282,10 +23282,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>PutVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23293,10 +23293,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>ClrVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23304,10 +23304,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23318,7 +23318,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>NegVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -23328,7 +23328,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -23344,7 +23344,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -24167,7 +24167,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW5</Name>
     <CompNumb>73</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -24380,7 +24380,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -24391,7 +24391,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -24405,10 +24405,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetDir</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24419,7 +24419,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetInput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24430,7 +24430,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetOutput</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24449,10 +24449,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>PutVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24460,10 +24460,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>ClrVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24471,10 +24471,10 @@
               <ReadOnly>true</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>0</Index>
-              <Value>true</Value>
+              <Index>1</Index>
+              <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>SetVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24485,7 +24485,7 @@
               <Index>1</Index>
               <Value>false</Value>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
               <UsrMethodName>NegVal</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -24495,7 +24495,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -24511,7 +24511,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -28223,7 +28223,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW6</Name>
     <CompNumb>80</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -28436,7 +28436,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -28447,7 +28447,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -28551,7 +28551,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -28567,7 +28567,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -28813,7 +28813,7 @@
     <BeanType>BitIO</BeanType>
     <Name>SW7</Name>
     <CompNumb>82</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>BITIO</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -29026,7 +29026,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>Deinit</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -29037,7 +29037,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetDir</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -29141,7 +29141,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ConnectPin</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -29157,7 +29157,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>GetRawVal</ItemSymbol>
-              <ReadOnly>true</ReadOnly>
+              <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>1</Index>
@@ -29403,7 +29403,7 @@
     <BeanType>Init_GPIO_VAR0</BeanType>
     <Name>PTA</Name>
     <CompNumb>55</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>PERIPHINSP</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -29625,7 +29625,7 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Value>true</Value>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>PinOutput1</ItemSymbol>
@@ -29787,7 +29787,7 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Value>true</Value>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>PinOutput2</ItemSymbol>
@@ -30111,7 +30111,7 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Value>true</Value>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>PinOutput4</ItemSymbol>
@@ -35052,7 +35052,7 @@
         <ItemSymbol>PinsGroup</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>PinGrp0FeatureCondGroup</ItemSymbol>
@@ -36100,7 +36100,7 @@
     <BeanType>Init_GPIO_VAR0</BeanType>
     <Name>PTB</Name>
     <CompNumb>56</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>PERIPHINSP</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -42793,7 +42793,7 @@
     <BeanType>Init_GPIO_VAR0</BeanType>
     <Name>PTD</Name>
     <CompNumb>79</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>PERIPHINSP</IconName>
     <UserFolderName>SW</UserFolderName>
@@ -54687,7 +54687,7 @@
               <ItemSymbol>IntPeriodTmg</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>init:;prec:5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
+              <Value>init:10 ms;prec:5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
               <RuntimeSetting>0</RuntimeSetting>
               <ReqDevPrescHigh>-1</ReqDevPrescHigh>
               <ReqDevPrescLow>-1</ReqDevPrescLow>
@@ -55491,7 +55491,7 @@
         <ItemSymbol>Tmg_Period</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>init:;prec:5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
+        <Value>init:10 ms;prec:5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
         <RuntimeSetting>0</RuntimeSetting>
         <ReqDevPrescHigh>-1</ReqDevPrescHigh>
         <ReqDevPrescLow>-1</ReqDevPrescLow>
