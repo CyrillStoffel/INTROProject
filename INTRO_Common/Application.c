@@ -58,6 +58,17 @@ void APP_EventHandler(EVNT_Handle event) {
     break;
   case EVNT_SW2_PRESSED:
 	LED2_Off();
+	break;
+  case EVNT_SW3_PRESSED:
+	  break;
+  case EVNT_SW4_PRESSED:
+  	  break;
+  case EVNT_SW5_PRESSED:
+  	  break;
+  case EVNT_SW6_PRESSED:
+  	  break;
+  case EVNT_SW7_PRESSED:
+  	  break;
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     // SHELL_SendString("SW1 pressed\r\n");
     #if PL_CONFIG_HAS_BUZZER
