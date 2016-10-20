@@ -54,21 +54,25 @@ void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
-    LED1_On();
+      CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     break;
   case EVNT_SW2_PRESSED:
-	LED1_Off();
+	  CLS1_SendStr("SW2 pressed\r\n", CLS1_GetStdio()->stdOut);
 	break;
   case EVNT_SW3_PRESSED:
-	  CLS1__SendStr("Pressed SW3\r\n",CLS1_GetStdio()->stdOut);
+	  CLS1_SendStr("SW3 pressed\r\n",CLS1_GetStdio()->stdOut);
 	  break;
   case EVNT_SW4_PRESSED:
+	  CLS1_SendStr("SW4 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
   case EVNT_SW5_PRESSED:
+	  CLS1_SendStr("SW5 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
   case EVNT_SW6_PRESSED:
+	  CLS1_SendStr("SW6 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
   case EVNT_SW7_PRESSED:
+	  CLS1_SendStr("SW7 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     // SHELL_SendString("SW1 pressed\r\n");
