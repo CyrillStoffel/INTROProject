@@ -50,37 +50,49 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_LED_HEARTBEAT:
     //LED1_Neg();
     break;
-
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
       CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
+      BUZ_Beep(500,500);
     break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
 	  CLS1_SendStr("SW2 pressed\r\n", CLS1_GetStdio()->stdOut);
 	break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=3
   case EVNT_SW3_PRESSED:
 	  CLS1_SendStr("SW3 pressed\r\n",CLS1_GetStdio()->stdOut);
 	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=4
   case EVNT_SW4_PRESSED:
 	  CLS1_SendStr("SW4 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=5
   case EVNT_SW5_PRESSED:
 	  CLS1_SendStr("SW5 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=6
   case EVNT_SW6_PRESSED:
 	  CLS1_SendStr("SW6 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=7
   case EVNT_SW7_PRESSED:
 	  CLS1_SendStr("SW7 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     // SHELL_SendString("SW1 pressed\r\n");
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
     break;
-  #endif
 #endif /* PL_CONFIG_HAS_KEYS */
 
     /* \todo extend handler as needed */
@@ -148,8 +160,6 @@ void APP_Start(void) {
     EVNT_HandleEvent(APP_EventHandler, TRUE);
 #endif
 
-    KEY_Scan();
-    EVNT_HandleEvent(APP_EventHandler, TRUE);
 
     //WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
   }

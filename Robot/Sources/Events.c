@@ -28,6 +28,16 @@
 
 #include "Cpu.h"
 #include "Events.h"
+#include "Platform.h"
+#if PL_CONFIG_HAS_EVENTS
+#include "Event.h"
+#endif
+#if PL_CONFIG_HAS_TRIGGER
+#include "Trigger.h"
+#endif
+#if PL_CONFIG_HAS_KEYS
+#include "Keys.h"
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,6 +80,7 @@ void Cpu_OnNMIINT(void)
 */
 void TI1_OnInterrupt(void)
 {
+	TRG_AddTick();
   /* Write your code here ... */
 }
 
