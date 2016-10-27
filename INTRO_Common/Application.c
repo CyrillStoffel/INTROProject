@@ -13,6 +13,7 @@
 #include "WAIT1.h"
 #include "CS1.h"
 #include "Keys.h"
+#include "KeyDebounce.h"
 #include "KIN1.h"
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
@@ -56,21 +57,33 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW1_PRESSED:
       CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
 	  CLS1_SendStr("SW2 pressed\r\n", CLS1_GetStdio()->stdOut);
 	break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=3
   case EVNT_SW3_PRESSED:
 	  CLS1_SendStr("SW3 pressed\r\n",CLS1_GetStdio()->stdOut);
 	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=4
   case EVNT_SW4_PRESSED:
 	  CLS1_SendStr("SW4 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=5
   case EVNT_SW5_PRESSED:
 	  CLS1_SendStr("SW5 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=6
   case EVNT_SW6_PRESSED:
 	  CLS1_SendStr("SW6 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
+#endif
+#if PL_CONFIG_NOF_KEYS>=7
   case EVNT_SW7_PRESSED:
 	  CLS1_SendStr("SW7 pressed\r\n", CLS1_GetStdio()->stdOut);
   	  break;
@@ -141,9 +154,13 @@ void APP_Start(void) {
   /* does usually not return! */
 #else
   for(;;) {
-#if PL_CONFIG_HAS_KEYS
-    KEY_Scan();
-#endif
+	#if PL_CONFIG_HAS_KEYS
+		#if PLC_CONFIG_HAS_DEBOUNCE
+	  	  KEYDBNC_Process();
+		#else
+	  	KEY_Scan();
+		#endif
+	#endif
 #if PL_CONFIG_HAS_EVENTS
     EVNT_HandleEvent(APP_EventHandler, TRUE);
 #endif
