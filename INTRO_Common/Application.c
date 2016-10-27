@@ -51,11 +51,11 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_LED_HEARTBEAT:
     //LED1_Neg();
     break;
-
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
       CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
+      BUZ_Beep(500,500);
     break;
 #endif
 #if PL_CONFIG_NOF_KEYS>=2
