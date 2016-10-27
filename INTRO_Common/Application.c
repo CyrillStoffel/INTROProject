@@ -55,7 +55,9 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
       CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
+	#if PL_CONFIG_HAS_BUZZER
       BUZ_Beep(500,500);
+	#endif
     break;
 #endif
 #if PL_CONFIG_NOF_KEYS>=2
