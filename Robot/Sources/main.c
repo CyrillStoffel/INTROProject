@@ -34,11 +34,8 @@
 #include "BitIoLdd1.h"
 #include "LEDPin2.h"
 #include "BitIoLdd2.h"
-<<<<<<< HEAD
-=======
 #include "BUZ1.h"
 #include "BitIoLdd4.h"
->>>>>>> 056c443f2cc936acb1ab6a2e1fa2b57e8fa2eeff
 #include "SW1.h"
 #include "BitIoLdd3.h"
 #include "CLS1.h"
