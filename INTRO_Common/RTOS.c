@@ -12,8 +12,10 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Application.h"
+#include "KeyDebounce.h"
 
 static void AppTask(void* param) {
+	(void) param;
   for(;;) {
 	#if PL_CONFIG_HAS_KEYS
   	  #if PL_CONFIG_HAS_DEBOUNCE
@@ -40,8 +42,8 @@ static void LedTask(void* param){
 		    } else if (*whichLED==2) {
 		      LED2_Neg();
 		    }
+		FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
 	}
-	FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
 }
 
 void RTOS_Init(void) {
