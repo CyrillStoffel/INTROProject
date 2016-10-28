@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Remote</name>
+	<name>INTRO_Remote_Master</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -37,10 +37,4 @@
 			<locationURI>PARENT-1-PROJECT_LOC/INTRO_Common</locationURI>
 		</link>
 	</linkedResources>
-	<variableList>
-		<variable>
-			<name>copy_PARENT</name>
-			<value>$%7BPARENT-2-PROJECT_LOC%7D/INTRO/Projects/Styger</value>
-		</variable>
-	</variableList>
 </projectDescription>
