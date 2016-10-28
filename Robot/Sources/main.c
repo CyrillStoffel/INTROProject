@@ -44,6 +44,7 @@
 #include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "RTT1.h"
+#include "SYS1.h"
 #include "WAIT1.h"
 #include "CS1.h"
 #include "HF1.h"
@@ -65,7 +66,7 @@ int main(void)
   /* Write your local variable definition here */
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
-  PE_low_level_init();
+   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */

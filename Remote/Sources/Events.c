@@ -28,6 +28,7 @@
 
 #include "Cpu.h"
 #include "Events.h"
+#include "Trigger.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -71,6 +72,7 @@ void Cpu_OnNMIINT(void)
 void TI1_OnInterrupt(void)
 {
   /* Write your code here ... */
+	TRG_AddTick();
 }
 
 /*
