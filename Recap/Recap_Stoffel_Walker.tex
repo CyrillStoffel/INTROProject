@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{beamerthemeshadow}
 \usepackage{amsmath}
+\usepackage{listings}
 
 \title{Recap INTRO HS16}
 \subtitle{USB \& Queues}
@@ -36,7 +37,6 @@
 \setbeamertemplate{navigation symbols}{}
 
 
-
 \begin{document}
 	
 	\frame{\titlepage}
@@ -47,7 +47,7 @@
 		\tableofcontents
 	\end{frame}
 
-	\section{USB Allgemein}
+	\section{USB}
 	\begin{frame}
 			\frametitle{USB Allgemein}
 				Frequenzen
@@ -62,5 +62,61 @@
 				\end{itemize}
 	\end{frame}
 	
+	\section{Queues}
+	\begin{frame}
+		\frametitle{Queues Allgemein}
+		\begin{itemize}
+			\item	Speicher wird im Heap alloziert
+			\item	FIFO
+			\item	LIFO
+			\item	'by value'
+		\end{itemize}
+	\end{frame}
 
-\end{document}s
+	\subsection{Erstellen und löschen einer Queue}
+\begin{frame}[fragile]
+\frametitle{Erstellen und löschen einer Queue}
+\begin{lstlisting}[language = C]
+xQueueHandle xQueueCreate ( 
+	unsigned portBASE_TYPE uxQueueLength,
+	unsigned portBASE_TYPE uxItemSize);
+
+void vQueueDelete ( xQueueHandle xQueue );	
+\end{lstlisting}
+\end{frame}
+	
+	\subsection{Elemente entfernen}
+\begin{frame}[fragile]
+\frametitle{Elemente entfernen}
+\begin{lstlisting}[language = C]
+BaseType_t xQueueReset ( xQueueHandle xQueue );
+
+BaseType_t xQueuePeek (
+	xQueueHandle xQueue ,
+	void *pvBuffer ,
+	portTickType xTicksToWait );
+	
+BaseType_t xQueueReceive (
+	xQueueHandle xQueue ,
+	void *pvBuffer ,
+	portTickType xTicksToWait );
+\end{lstlisting}
+\end{frame}
+
+	\subsection{Elemente hinzufügen}
+\begin{frame}[fragile]
+\frametitle{Elemente hinzufügen}
+\begin{lstlisting}[language = C]
+BaseType_t xQueueSendToBack (
+	xQueueHandle xQueue ,
+	const void *pvItemToQueue ,
+	portTickType xTicksToWait );
+	
+BaseType_t xQueueSendToFront (
+	xQueueHandle xQueue ,
+	const void *pvItemToQueue ,
+	portTickType xTicksToWait );
+\end{lstlisting}
+\end{frame}
+
+\end{document}

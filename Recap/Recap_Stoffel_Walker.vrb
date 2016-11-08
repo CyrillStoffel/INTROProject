@@ -1,0 +1,12 @@
+\frametitle{Elemente hinzufügen}
+\begin{lstlisting}[language = C]
+BaseType_t xQueueSendToBack (
+	xQueueHandle xQueue ,
+	const void *pvItemToQueue ,
+	portTickType xTicksToWait );
+
+BaseType_t xQueueSendToFront (
+	xQueueHandle xQueue ,
+	const void *pvItemToQueue ,
+	portTickType xTicksToWait );
+\end{lstlisting}
