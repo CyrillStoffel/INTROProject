@@ -75,7 +75,7 @@
 	\begin{frame}
 		\frametitle{Aufbau}
 		\begin{figure}
-			\includegraphics[width=0.8\textwidth]{stack}
+			\includegraphics[width=0.7\textwidth]{stack}
 		\end{figure}		
 	\end{frame}
 
@@ -158,14 +158,14 @@ BaseType_t xQueueSendToFront (
 		\frametitle{Frage 3}
 		\begin{itemize}
 			\item<1-> Das USB Device taucht unter Ports nicht auf. Woran könnte das liegen?
-			\item<2-> Der clock ist falsch eingestellt oder die interrupts wurden eingeschalten bevor der USB Stack initialisiert wurde.
+			\item<2-> Der clock ist falsch eingestellt oder die interrupts wurden eingeschalten, bevor der USB Stack initialisiert wurde.
 		\end{itemize}
 	\end{frame}
 	\begin{frame}
 		\frametitle{Frage 4}
 		\begin{itemize}
 			\item<1-> Kann die Länge einer Queue dynamisch verändert werden?
- 			\item<2-> Nein
+ 			\item<2-> Nein, dies muss bei der Initialisierung festgelegt werden.
 		\end{itemize}
 	\end{frame}
 	\begin{frame}

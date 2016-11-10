@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.21)  10 NOV 2016 08:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.21)  10 NOV 2016 14:29
 entering extended mode
 **Recap_Stoffel_Walker.tex
 (Recap_Stoffel_Walker.tex
@@ -1208,12 +1208,8 @@ File: stack.jpg Graphic file (type jpg)
 
 <use stack.jpg>
 Package pdftex.def Info: stack.jpg used on input line 80.
-(pdftex.def)             Requested size: 245.83282pt x 211.5798pt.
-
-Overfull \vbox (21.13924pt too high) detected at line 80
- []
-
-[5
+(pdftex.def)             Requested size: 215.10196pt x 185.13173pt.
+ [5
 
  <./stack.jpg>] [6
 
@@ -1296,7 +1292,7 @@ Here is how much of TeX's memory you used:
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Recap_Stoffel_Walker.pdf (19 pages, 260360 bytes).
+Output written on Recap_Stoffel_Walker.pdf (19 pages, 260471 bytes).
 PDF statistics:
  328 PDF objects out of 1000 (max. 8388607)
  48 named destinations out of 1000 (max. 500000)
