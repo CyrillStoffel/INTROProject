@@ -1,7 +1,11 @@
 \beamer@endinputifotherversion {3.36pt}
 \select@language {ngerman}
 \beamer@sectionintoc {1}{USB}{3}{0}{1}
-\beamer@sectionintoc {2}{Queues}{4}{0}{2}
-\beamer@subsectionintoc {2}{1}{Erstellen und l\IeC {\"o}schen einer Queue}{5}{0}{2}
-\beamer@subsectionintoc {2}{2}{Elemente entfernen}{6}{0}{2}
-\beamer@subsectionintoc {2}{3}{Elemente hinzuf\IeC {\"u}gen}{7}{0}{2}
+\beamer@subsectionintoc {1}{1}{USB Allgemein}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Frequenz}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{Aufbau}{5}{0}{1}
+\beamer@sectionintoc {2}{Queues}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Queues Allgemein}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Erstellen und l\IeC {\"o}schen einer Queue}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Elemente entfernen}{8}{0}{2}
+\beamer@subsectionintoc {2}{4}{Elemente hinzuf\IeC {\"u}gen}{9}{0}{2}

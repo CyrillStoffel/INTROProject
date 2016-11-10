@@ -5,6 +5,7 @@
 \usepackage{beamerthemeshadow}
 \usepackage{amsmath}
 \usepackage{listings}
+\usepackage{graphicx}
 
 \title{Recap INTRO HS16}
 \subtitle{USB \& Queues}
@@ -48,21 +49,40 @@
 	\end{frame}
 
 	\section{USB}
+	\subsection{USB Allgemein}
 	\begin{frame}
 			\frametitle{USB Allgemein}
-				Frequenzen
-				\begin{itemize}
-					\item 48MHz
-					\item 24MHz
-					\item 12MHz
-				\end{itemize}
-				Spannung
-				\begin{itemize}
-					\item $\Delta 3$V													
-				\end{itemize}
+				\begin{figure}
+					\includegraphics[width=0.7\textwidth]{usb}
+				\end{figure}
+			\begin{itemize}
+				\item Signal $\Delta$3V
+				\item Speisung 5V			
+			\end{itemize}								
 	\end{frame}
 	
+	\subsection{Frequenz}
+	\begin{frame}
+		\frametitle{Frequenz}
+		\begin{itemize}
+			\item USB: 12MHz
+			\item Abtastfrequenz: 24MHz
+			\item NXP Kinetis: 48MHz
+		\end{itemize}
+	\end{frame}
+
+	\subsection{Aufbau}
+	\begin{frame}
+		\frametitle{Aufbau}
+		\begin{figure}
+			\includegraphics[width=0.8\textwidth]{stack}
+		\end{figure}		
+	\end{frame}
+
+
+	
 	\section{Queues}
+	\subsection{Queues Allgemein}
 	\begin{frame}
 		\frametitle{Queues Allgemein}
 		\begin{itemize}
@@ -118,5 +138,42 @@ BaseType_t xQueueSendToFront (
 	portTickType xTicksToWait );
 \end{lstlisting}
 \end{frame}
+
+
+	\begin{frame}
+		\frametitle{Frage 1}
+		\begin{itemize}
+			\item<1-> Mit welcher Frequenz wird das USB Modul versorgt? Welches ist die effektive Frequenz von USB?
+			\item<2-> 48MHz und 12MHz
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Frage 2}
+		\begin{itemize}
+			\item<1-> Welchen Betrag hat die differentielle Signalspannung bei USB?
+			\item<2-> $\Delta$3V	
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Frage 3}
+		\begin{itemize}
+			\item<1-> Das USB Device taucht unter Ports nicht auf. Woran könnte das liegen?
+			\item<2-> Der clock ist falsch eingestellt oder die interrupts wurden eingeschalten bevor der USB Stack initialisiert wurde.
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Frage 4}
+		\begin{itemize}
+			\item<1-> Kann die Länge einer Queue dynamisch verändert werden?
+ 			\item<2-> Nein
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Frage 5}
+		\begin{itemize}
+			\item<1-> Wie werden Items in die Queue gegeben? (by reference/value)
+			\item<2-> by value
+		\end{itemize}
+	\end{frame}
 
 \end{document}

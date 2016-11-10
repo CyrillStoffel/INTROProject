@@ -6,24 +6,42 @@
 \headcommand {\sectionentry {1}{USB}{3}{USB}{0}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{USB Allgemein}}\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{USB Allgemein}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\sectionentry {2}{Queues}{4}{Queues}{0}}
-\headcommand {\beamer@sectionpages {3}{3}}
-\headcommand {\beamer@subsectionpages {3}{3}}
-\headcommand {\slideentry {2}{0}{1}{4/4}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Frequenz}}\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\slideentry {1}{2}{1}{4/4}{Frequenz}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{5}{Erstellen und l\IeC {\"o}schen einer Queue}}\headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\slideentry {2}{1}{1}{5/5}{Erstellen und l\IeC {\"o}schen einer Queue}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{5}{Aufbau}}\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\slideentry {1}{3}{1}{5/5}{Aufbau}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Elemente entfernen}}\headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\slideentry {2}{2}{1}{6/6}{Elemente entfernen}{0}}
+\headcommand {\sectionentry {2}{Queues}{6}{Queues}{0}}
+\headcommand {\beamer@sectionpages {3}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Queues Allgemein}}\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\slideentry {2}{1}{1}{6/6}{Queues Allgemein}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{7}{Elemente hinzuf\IeC {\"u}gen}}\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {2}{3}{1}{7/7}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{7}{Erstellen und l\IeC {\"o}schen einer Queue}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{2}{1}{7/7}{Erstellen und l\IeC {\"o}schen einer Queue}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@partpages {1}{7}}
-\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\beamer@sectionpages {4}{7}}
-\headcommand {\beamer@documentpages {7}}
-\headcommand {\def \inserttotalframenumber {7}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{8}{Elemente entfernen}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {2}{3}{1}{8/8}{Elemente entfernen}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{9}{Elemente hinzuf\IeC {\"u}gen}}\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {2}{4}{1}{9/9}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {2}{4}{2}{10/11}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\slideentry {2}{4}{3}{12/13}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {12}{13}}
+\headcommand {\slideentry {2}{4}{4}{14/15}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {14}{15}}
+\headcommand {\slideentry {2}{4}{5}{16/17}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {16}{17}}
+\headcommand {\slideentry {2}{4}{6}{18/19}{Elemente hinzuf\IeC {\"u}gen}{0}}
+\headcommand {\beamer@framepages {18}{19}}
+\headcommand {\beamer@partpages {1}{19}}
+\headcommand {\beamer@subsectionpages {9}{19}}
+\headcommand {\beamer@sectionpages {6}{19}}
+\headcommand {\beamer@documentpages {19}}
+\headcommand {\def \inserttotalframenumber {14}}
