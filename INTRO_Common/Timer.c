@@ -11,7 +11,6 @@
 #include "Timer.h"
 #if PL_CONFIG_HAS_EVENTS
   #include "Event.h"
-#include "Led.h"
 #endif
 #if PL_CONFIG_HAS_TRIGGER
   #include "Trigger.h"
@@ -19,18 +18,23 @@
 #if PL_CONFIG_HAS_MOTOR_TACHO
   #include "Tacho.h"
 #endif
+#include "TMOUT1.h"
 
 void TMR_OnInterrupt(void) {
   /* this one gets called from an interrupt!!!! */
   /*! \todo Add code for a blinking LED here */
-	static unsigned int cntr = 0;
-	  #define BLINK_PERIOD_MS 1000
-	  cntr++;
-	#if PL_CONFIG_HAS_EVENTS
-	  if ((cntr%(BLINK_PERIOD_MS/TMR_TICK_MS))==0) { /* every two seconds */
-	    EVNT_SetEvent(EVNT_LED_HEARTBEAT);
-	  }
-	#endif
+  static unsigned int cntr = 0;
+  #define BLINK_PERIOD_MS 1000
+  cntr++;
+#if PL_CONFIG_HAS_EVENTS
+  if ((cntr%(BLINK_PERIOD_MS/TMR_TICK_MS))==0) { /* every two seconds */
+    EVNT_SetEvent(EVNT_LED_HEARTBEAT);
+  }
+#endif
+#if PL_CONFIG_HAS_TRIGGER
+  TRG_AddTick();
+#endif
+  TMOUT1_AddTick();
 }
 
 void TMR_Init(void) {
