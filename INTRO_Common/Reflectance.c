@@ -72,6 +72,7 @@ static int16_t refCenterLineVal=0; /* 0 means no line, >0 means line is below se
 static SensorCalibT SensorCalibMinMax; /* min/max calibration data in SRAM */
 static SensorTimeType SensorRaw[REF_NOF_SENSORS]; /* raw sensor values */
 static SensorTimeType SensorCalibrated[REF_NOF_SENSORS]; /* 0 means white/min value, 1000 means black/max value */
+xSemaphoreHandle Mutex;
 
 /* Functions as wrapper around macro. */
 static void S1_SetOutput(void) { IR1_SetOutput(); }
@@ -150,6 +151,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
     raw[i] = MAX_SENSOR_VALUE;
   }
   WAIT1_Waitus(50); /* give at least 10 us to charge the capacitor */
+  FRTOS1_xSemaphoreTake(Mutex, portMAX_DELAY);
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
@@ -166,7 +168,8 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
         cnt++;
       }
     }
-  } while(cnt!=REF_NOF_SENSORS);
+  } while(cnt!=REF_NOF_SENSORS && timerVal < 0xB000);
+  FRTOS1_xSemaphoreGive(Mutex);
   LED_IR_Off(); /* IR LED's off */
 }
 
@@ -590,6 +593,10 @@ void REF_Init(void) {
   (void)FRTOS1_xSemaphoreTake(REF_StartStopSem, 0); /* empty token */
   FRTOS1_vQueueAddToRegistry(REF_StartStopSem, "RefStartStopSem");
 #endif
+  Mutex = FRTOS1_xSemaphoreCreateMutex();
+  if(Mutex==NULL){
+	  for(;;){}
+  }
   refState = REF_STATE_INIT;
   timerHandle = RefCnt_Init(NULL);
   /*! \todo You might need to adjust priority or other task settings */
