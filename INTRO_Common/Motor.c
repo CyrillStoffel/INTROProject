@@ -132,6 +132,7 @@ static void MOT_PrintHelp(const CLS1_StdIOType *io) {
   CLS1_SendHelpStr((unsigned char*)"  help|status", (unsigned char*)"Shows motor help or status\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  (L|R) forward|backward", (unsigned char*)"Change motor direction\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  (L|R) duty <number>", (unsigned char*)"Change motor PWM (-100..+100)%\r\n", io->stdOut);
+  CLS1_SendHelpStr((unsigned char*)"  stop", (unsigned char*)"stop both\r\n", io->stdOut);
 }
 
 static void MOT_PrintStatus(const CLS1_StdIOType *io) {
@@ -181,6 +182,10 @@ uint8_t MOT_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
   } else if (UTIL1_strcmp((char*)cmd, (char*)"motor R backward")==0) {
     MOT_SetDirection(&motorR, MOT_DIR_BACKWARD);
     *handled = TRUE;
+  } else if (UTIL1_strcmp((char*)cmd, (char*)"motor stop")==0) {
+      MOT_SetSpeedPercent(&motorL, (MOT_SpeedPercent)0);
+      MOT_SetSpeedPercent(&motorR, (MOT_SpeedPercent)0);
+      *handled = TRUE;
   } else if (UTIL1_strncmp((char*)cmd, (char*)"motor L duty ", sizeof("motor L duty ")-1)==0) {
     p = cmd+sizeof("motor L duty");
     if (UTIL1_xatoi(&p, &val)==ERR_OK && val >=-100 && val<=100) {
