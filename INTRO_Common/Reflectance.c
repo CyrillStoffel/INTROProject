@@ -60,7 +60,7 @@ typedef struct SensorFctType_ {
 } SensorFctType;
 
 typedef uint16_t SensorTimeType;
-#define MAX_SENSOR_VALUE  ((SensorTimeType)-1)
+#define MAX_SENSOR_VALUE ((14000)-1) //SensorTimeType
 
 /* calibration min/max values */
 typedef struct SensorCalibT_ {
@@ -72,7 +72,8 @@ static int16_t refCenterLineVal=0; /* 0 means no line, >0 means line is below se
 static SensorCalibT SensorCalibMinMax; /* min/max calibration data in SRAM */
 static SensorTimeType SensorRaw[REF_NOF_SENSORS]; /* raw sensor values */
 static SensorTimeType SensorCalibrated[REF_NOF_SENSORS]; /* 0 means white/min value, 1000 means black/max value */
-xSemaphoreHandle Mutex;
+xSemaphoreHandle REF_Mutex_Measure_Raw;
+
 
 /* Functions as wrapper around macro. */
 static void S1_SetOutput(void) { IR1_SetOutput(); }
@@ -141,8 +142,10 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   uint8_t cnt; /* number of sensor */
   uint8_t i;
   RefCnt_TValueType timerVal;
+  CS1_CriticalVariable();
   /*! \todo Consider reentrancy and mutual exclusion! */
 
+  if(FRTOS1_xSemaphoreTake(REF_Mutex_Measure_Raw, portMAX_DELAY)==pdPASS){
   LED_IR_On(); /* IR LED's on */
   WAIT1_Waitus(200);
   for(i=0;i<REF_NOF_SENSORS;i++) {
@@ -151,7 +154,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
     raw[i] = MAX_SENSOR_VALUE;
   }
   WAIT1_Waitus(50); /* give at least 10 us to charge the capacitor */
-  FRTOS1_xSemaphoreTake(Mutex, portMAX_DELAY);
+  CS1_EnterCritical();
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
@@ -159,6 +162,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
     cnt = 0;
+
     for(i=0;i<REF_NOF_SENSORS;i++) {
       if (raw[i]==MAX_SENSOR_VALUE) { /* not measured yet? */
         if (SensorFctArray[i].GetVal()==0) {
@@ -168,9 +172,11 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
         cnt++;
       }
     }
-  } while(cnt!=REF_NOF_SENSORS && timerVal < 0xB000);
-  FRTOS1_xSemaphoreGive(Mutex);
+  } while((cnt!=REF_NOF_SENSORS) && (timerVal <= MAX_SENSOR_VALUE) );
+  CS1_ExitCritical();
   LED_IR_Off(); /* IR LED's off */
+  FRTOS1_xSemaphoreGive(REF_Mutex_Measure_Raw);
+  }
 }
 
 static void REF_CalibrateMinMax(SensorTimeType min[REF_NOF_SENSORS], SensorTimeType max[REF_NOF_SENSORS], SensorTimeType raw[REF_NOF_SENSORS]) {
@@ -593,8 +599,8 @@ void REF_Init(void) {
   (void)FRTOS1_xSemaphoreTake(REF_StartStopSem, 0); /* empty token */
   FRTOS1_vQueueAddToRegistry(REF_StartStopSem, "RefStartStopSem");
 #endif
-  Mutex = FRTOS1_xSemaphoreCreateMutex();
-  if(Mutex==NULL){
+  REF_Mutex_Measure_Raw = FRTOS1_xSemaphoreCreateMutex();
+  if(REF_Mutex_Measure_Raw==NULL){
 	  for(;;){}
   }
   refState = REF_STATE_INIT;
