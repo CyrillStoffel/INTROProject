@@ -351,7 +351,7 @@ static void DriveTask(void *pvParameters) {
     } else if (DRV_Status.mode==DRV_MODE_NONE) {
       /* do nothing */
     }
-    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_PERIOD_MS);
+    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_RATE_MS);
   } /* for */
 }
 
@@ -370,7 +370,7 @@ void DRV_Init(void) {
     for(;;){} /* out of memory? */
   }
   FRTOS1_vQueueAddToRegistry(DRV_Queue, "Drive");
-  if (FRTOS1_xTaskCreate(DriveTask, "Drive", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+3, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(DriveTask, "Drive", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+5, NULL) != pdPASS) {
     for(;;){} /* error */
   }
 }
