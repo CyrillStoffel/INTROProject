@@ -36,6 +36,10 @@
 #if PL_CONFIG_BOARD_IS_ROBO_V2
   #include "PORT_PDD.h"
 #endif
+#if PL_CONFIG_HAS_LINE_FOLLOW
+	#include "LineFollow.h"
+#endif
+
 
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
@@ -64,6 +68,9 @@ void APP_EventHandler(EVNT_Handle event) {
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
+	#if PL_CONFIG_HAS_LINE_FOLLOW
+    LF_StartFollowing();
+	#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=2
