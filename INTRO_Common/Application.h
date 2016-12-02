@@ -17,6 +17,20 @@
 void APP_EventHandler(EVNT_Handle event);
 #endif
 
+typedef enum{
+	STOP = 0,
+	LINE_FOLLOW_INIT,
+	LINE_FOLLOW_RUN,
+	TURN
+} State_Line;
+
+
+static bool stopTurn(void);
+
+static void LineTestatTask(void *param);
+
+void InitTestat(void);
+
 void APP_Start(void);
 
 #endif /* SOURCES_FS2016_COMMON_APPLICATION_H_ */

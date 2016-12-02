@@ -32,7 +32,7 @@ static void LedTask(void* param) {
 #endif
 
 static void AppTask(void *param) {
-  for(;;) {
+	  for(;;) {
     #if PL_CONFIG_HAS_KEYS
       #if PL_CONFIG_HAS_DEBOUNCE
         KEYDBNC_Process();
@@ -48,6 +48,7 @@ static void AppTask(void *param) {
 }
 
 void RTOS_Init(void) {
+	InitTestat();
 #if 1
   static const int led1 = 1;
   static const int led2 = 2;
@@ -62,9 +63,12 @@ void RTOS_Init(void) {
     for(;;){} /* error case only, stay here! */
   }
 #endif
+
   if (FRTOS1_xTaskCreate(AppTask, (uint8_t *)"App", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
     for(;;){} /* error case only, stay here! */
   }
+
+
 }
 
 void RTOS_Deinit(void) {

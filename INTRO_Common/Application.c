@@ -39,6 +39,13 @@
 #if PL_CONFIG_HAS_LINE_FOLLOW
 	#include "LineFollow.h"
 #endif
+#if PL_CONFIG_HAS_TURN
+	#include "Turn.h"
+	#include "Tacho.h"
+#endif
+
+static bool LineTaskRun;
+static State_Line state;
 
 
 #if PL_CONFIG_HAS_EVENTS
@@ -69,7 +76,13 @@ void APP_EventHandler(EVNT_Handle event) {
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
 	#if PL_CONFIG_HAS_LINE_FOLLOW
-    LF_StartFollowing();
+    if (!LineTaskRun){
+    	LineTaskRun = true;
+    	state = LINE_FOLLOW_INIT;
+    } else {
+    	LineTaskRun = false;
+    	state = STOP;
+    }
 	#endif
     break;
   #endif
@@ -216,4 +229,52 @@ void APP_Start(void) {
 #endif
 }
 
+static bool stopTurn(){
+	return state=STOP;
+}
+
+static void LineTestatTask(void *param){
+	bool secondRun;
+	for(;;) {
+		switch(state){
+		case STOP:
+			if(LF_IsFollowing()){
+			LF_StopFollowing();
+			}
+			break;
+		case LINE_FOLLOW_INIT:
+			secondRun = false;
+			if (!LF_IsFollowing()) {
+			LF_StartFollowing();
+			state = LINE_FOLLOW_RUN;
+			}
+			break;
+		case LINE_FOLLOW_RUN:
+			if (!LF_IsFollowing()){
+				if (!secondRun){
+					state = TURN;
+				}else{
+					state = STOP;
+				}
+			}
+			break;
+		case TURN:
+			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
+			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {
+				secondRun = true;
+				state = LINE_FOLLOW_RUN;
+			}
+			break;
+		}
+	}
+	FRTOS1_vTaskDelay(20/portTICK_PERIOD_MS);
+}
+
+void InitTestat(void) {
+	state = STOP;
+	  if(FRTOS1_xTaskCreate(LineTestatTask, (uint8_t *)"LineTestatTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS){
+	    	      		for(;;){}
+	    }
+
+}
 
