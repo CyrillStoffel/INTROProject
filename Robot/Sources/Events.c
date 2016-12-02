@@ -80,7 +80,6 @@ void Cpu_OnNMIINT(void)
 */
 void TI1_OnInterrupt(void)
 {
-	TRG_AddTick();
   /* Write your code here ... */
 }
 
@@ -129,6 +128,7 @@ void FRTOS1_vApplicationTickHook(void)
   /* Called for every RTOS tick. */
   /* Write your code here ... */
 	TACHO_Sample();
+	TRG_AddTick();
 }
 
 /*
