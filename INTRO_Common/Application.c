@@ -42,6 +42,7 @@
 #if PL_CONFIG_HAS_TURN
 	#include "Turn.h"
 	#include "Tacho.h"
+	#include "Reflectance.h"
 #endif
 
 static bool LineTaskRun;
@@ -78,10 +79,10 @@ void APP_EventHandler(EVNT_Handle event) {
 	#if PL_CONFIG_HAS_LINE_FOLLOW
     if (!LineTaskRun){
     	LineTaskRun = true;
-    	state = LINE_FOLLOW_INIT;
+    	state = STOP;
     } else {
     	LineTaskRun = false;
-    	state = STOP;
+    	state = STOP_TAST;
     }
 	#endif
     break;
@@ -234,47 +235,62 @@ static bool stopTurn(){
 }
 
 static void LineTestatTask(void *param){
+#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
 	bool secondRun;
 	for(;;) {
 		switch(state){
+		case STOP_TAST:
+			if(LF_IsFollowing()){
+					LF_StopFollowing();
+			}
+			break;
+
 		case STOP:
 			if(LF_IsFollowing()){
+			SHELL_SendString("state: STOP\r\n");
 			LF_StopFollowing();
+			}
+			if(REF_GetLineKind()==REF_LINE_STRAIGHT){
+				state = LINE_FOLLOW_INIT;
 			}
 			break;
 		case LINE_FOLLOW_INIT:
-			secondRun = false;
 			if (!LF_IsFollowing()) {
-			LF_StartFollowing();
-			state = LINE_FOLLOW_RUN;
-			}
-			break;
-		case LINE_FOLLOW_RUN:
-			if (!LF_IsFollowing()){
-				if (!secondRun){
-					state = TURN;
-				}else{
-					state = STOP;
-				}
-			}
-			break;
-		case TURN:
-			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
-			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {
-				secondRun = true;
+				SHELL_SendString("state: LINE_FOLLOW_INIT\r\n");
+				LF_StartFollowing();
 				state = LINE_FOLLOW_RUN;
 			}
 			break;
+
+		case LINE_FOLLOW_RUN:
+			if(REF_GetLineKind()==REF_LINE_FULL){
+				state = STOP;
+				}
+			if(REF_GetLineKind()==REF_LINE_NONE){
+				state = TURN;
+				}
+			break;
+
+		case TURN:
+			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
+			FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
+			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {
+				SHELL_SendString("state: TURN\r\n");
+				state = LINE_FOLLOW_INIT;
+			}
+			break;
 		}
+		FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 	}
-	FRTOS1_vTaskDelay(20/portTICK_PERIOD_MS);
+#endif
 }
 
 void InitTestat(void) {
-	state = STOP;
+#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
+	state = STOP_TAST;
 	  if(FRTOS1_xTaskCreate(LineTestatTask, (uint8_t *)"LineTestatTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS){
 	    	      		for(;;){}
 	    }
-
+#endif
 }
 

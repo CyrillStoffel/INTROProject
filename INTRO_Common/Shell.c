@@ -85,12 +85,20 @@
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_BT    (0 && PL_CONFIG_HAS_BLUETOOTH)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_UART  (0)
 
+#if RNET_CONFIG_REMOTE_STDIO
+	static unsigned char radio_cmd_buf[48];
+	static CLS1_ConstStdIOType *ioRemote;
+#endif
+
 #if SHELL_HANDLER_ARRAY
 typedef struct {
   CLS1_ConstStdIOType *stdio;
   unsigned char *buf;
   size_t bufSize;
 } SHELL_IODesc;
+
+
+
 
 #if CLS1_DEFAULT_SERIAL && (SHELL_CONFIG_HAS_SHELL_EXTRA_CDC || SHELL_CONFIG_HAS_SHELL_EXTRA_RTT)
   static void SHELL_SendChar(uint8_t ch) {
@@ -323,6 +331,12 @@ static void ShellTask(void *pvParameters) {
     }
 #endif /* PL_CONFIG_SQUEUE_SINGLE_CHAR */
 #endif /* PL_CONFIG_HAS_SHELL_QUEUE */
+
+	#if RNET_CONFIG_REMOTE_STDIO
+		RSTDIO_Print(SHELL_GetStdio()); /* dispatch incoming messages and send them to local standard I/O */
+		(void)CLS1_ReadAndParseWithCommandTable(radio_cmd_buf, sizeof(radio_cmd_buf), ioRemote, CmdParserTable);
+	#endif
+
     FRTOS1_vTaskDelay(10/portTICK_PERIOD_MS);
   } /* for */
 }
@@ -330,6 +344,10 @@ static void ShellTask(void *pvParameters) {
 
 void SHELL_Init(void) {
   SHELL_val = 0;
+	#if RNET_CONFIG_REMOTE_STDIO
+		radio_cmd_buf[0] = '\0';
+		ioRemote = RSTDIO_GetStdioRx();
+	#endif
 #if !CLS1_DEFAULT_SERIAL && PL_CONFIG_CONFIG_HAS_BLUETOOTH
   (void)CLS1_SetStdio(&BT_stdio); /* use the Bluetooth stdio as default */
 #endif

@@ -25,6 +25,9 @@
 #if PL_CONFIG_HAS_REMOTE
   #include "Remote.h"
 #endif
+#if RNET_CONFIG_REMOTE_STDIO
+#include "RStdIO.h"
+#endif
 
 static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
 
