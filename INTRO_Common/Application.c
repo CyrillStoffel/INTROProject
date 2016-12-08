@@ -231,7 +231,7 @@ void APP_Start(void) {
 }
 
 static bool stopTurn(){
-	return state=STOP;
+	return state=STOP_TAST;
 }
 
 static void LineTestatTask(void *param){
