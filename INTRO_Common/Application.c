@@ -78,6 +78,7 @@ void APP_EventHandler(EVNT_Handle event) {
     LED1_Neg();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW1 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_RIGHT, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
@@ -95,18 +96,21 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
     SHELL_SendString("SW2 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_LEFT, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     LED1_Neg();
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=3
   case EVNT_SW3_PRESSED:
     SHELL_SendString("SW3 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_BACKWARD, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     LED1_Neg();
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=4
   case EVNT_SW4_PRESSED:
     SHELL_SendString("SW4 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_STOP, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     LED1_Neg();
     break;
   #endif
