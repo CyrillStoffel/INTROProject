@@ -48,7 +48,9 @@ static void AppTask(void *param) {
 }
 
 void RTOS_Init(void) {
+#if PL_CONFIG_BOARD_IS_ROBO
 	InitTestat();
+#endif
 #if 1
   static const int led1 = 1;
   static const int led2 = 2;

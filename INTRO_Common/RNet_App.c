@@ -25,8 +25,8 @@
 #if PL_CONFIG_HAS_REMOTE
   #include "Remote.h"
 #endif
-#if RNET_CONFIG_REMOTE_STDIO
-#include "RStdIO.h"
+#if PL_CONFIG_BOARD_IS_ROBO
+#include "Drive.h"
 #endif
 
 static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
@@ -70,6 +70,10 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
       CLS1_SendStr(buf, io->stdOut);
 #endif /* PL_HAS_SHELL */      
       return ERR_OK;
+#if PL_CONFIG_BOARD_IS_ROBO
+    case RAPP_MSG_TYPE_FORWARD:
+    	return DRV_SetSpeed(50,50);
+#endif
     default: /*! \todo Handle your own messages here */
       break;
   } /* switch */

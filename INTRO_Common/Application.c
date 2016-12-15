@@ -44,6 +44,11 @@
 	#include "Tacho.h"
 	#include "Reflectance.h"
 #endif
+#if PL_CONFIG_BOARD_IS_REMOTE
+#include "RNet_App.h"
+#include "RNet_AppConfig.h"
+#include "RApp.h"
+#endif
 
 static bool LineTaskRun;
 static State_Line state;
@@ -108,6 +113,7 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=5
   case EVNT_SW5_PRESSED:
     SHELL_SendString("SW5 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_FORWARD, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     LED1_Neg();
     break;
   #endif
@@ -230,12 +236,12 @@ void APP_Start(void) {
 #endif
 }
 
+#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
 static bool stopTurn(){
 	return state=STOP_TAST;
 }
 
 static void LineTestatTask(void *param){
-#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
 	bool secondRun;
 	for(;;) {
 		switch(state){
@@ -282,15 +288,13 @@ static void LineTestatTask(void *param){
 		}
 		FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 	}
-#endif
 }
 
 void InitTestat(void) {
-#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
 	state = STOP_TAST;
 	  if(FRTOS1_xTaskCreate(LineTestatTask, (uint8_t *)"LineTestatTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS){
 	    	      		for(;;){}
 	    }
-#endif
-}
 
+}
+#endif
