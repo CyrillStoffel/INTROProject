@@ -72,7 +72,25 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
       return ERR_OK;
 #if PL_CONFIG_BOARD_IS_ROBO
     case RAPP_MSG_TYPE_FORWARD:
-    	return DRV_SetSpeed(50,50);
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	return DRV_SetSpeed(1500,1500);
+
+    case RAPP_MSG_TYPE_BACKWARD:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	return DRV_SetSpeed(-1500,-1500);
+
+    case RAPP_MSG_TYPE_STOP:
+    	DRV_SetMode(DRV_MODE_STOP);
+    	return DRV_SetSpeed(0,0);
+
+    case RAPP_MSG_TYPE_LEFT:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	return DRV_SetSpeed(-500,500);
+
+    case RAPP_MSG_TYPE_RIGHT:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	return DRV_SetSpeed(500,-500);
+
 #endif
     default: /*! \todo Handle your own messages here */
       break;
