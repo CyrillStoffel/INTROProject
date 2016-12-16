@@ -92,18 +92,26 @@ void APP_EventHandler(EVNT_Handle event) {
     }
 	#endif
     break;
+  case EVNT_SW1_LPRESSED:
+    SHELL_SendString("SW1 long pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_RIGHTLONG, RNETA_GetDestAddr(), 0);
+    break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
     SHELL_SendString("SW2 pressed\r\n");
-    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_LEFT, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_LEFT, RNETA_GetDestAddr(), 0);
     LED1_Neg();
     break;
+  case EVNT_SW2_LPRESSED:
+  	  SHELL_SendString("SW2 long pressed\r\n");
+      RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_LEFTLONG, RNETA_GetDestAddr(), 0);
+      break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=3
   case EVNT_SW3_PRESSED:
     SHELL_SendString("SW3 pressed\r\n");
-    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_BACKWARD, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_BACKWARD, RNETA_GetDestAddr(), 0);
     LED1_Neg();
     break;
   #endif
@@ -117,7 +125,7 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=5
   case EVNT_SW5_PRESSED:
     SHELL_SendString("SW5 pressed\r\n");
-    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_FORWARD, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_FORWARD, RNETA_GetDestAddr(), 0);
     LED1_Neg();
     break;
   #endif
@@ -130,6 +138,7 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=7
   case EVNT_SW7_PRESSED:
     SHELL_SendString("SW7 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_TEST, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
     LED1_Neg();
     break;
   #endif
