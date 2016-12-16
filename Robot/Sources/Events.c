@@ -38,6 +38,9 @@
 #if PL_CONFIG_HAS_KEYS
 #include "Keys.h"
 #endif
+#if PL_CONFIG_HAS_QUADRATURE
+#include "Tacho.h"
+#endif
 
 #ifdef __cplusplus
 extern "C" {

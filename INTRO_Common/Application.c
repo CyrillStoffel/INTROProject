@@ -45,14 +45,24 @@
 	#include "Reflectance.h"
 #endif
 #if PL_CONFIG_BOARD_IS_REMOTE
-#include "RNet_App.h"
-#include "RNet_AppConfig.h"
-#include "RApp.h"
+	#include "RNet_App.h"
+	#include "RNet_AppConfig.h"
+	#include "RApp.h"
+#endif
+
+#if PL_CONFIG_HAS_DRIVE
+	#include "Drive.h"
+#endif
+
+#if PL_CONFIG_HAS_RADIO
+	#include "RApp.h"
+	#include "RNet_AppConfig.h"
+	#include "RPHY.h"
 #endif
 
 static bool LineTaskRun;
 static State_Line state;
-
+static unsigned char buf[2];
 
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
@@ -78,19 +88,12 @@ void APP_EventHandler(EVNT_Handle event) {
     LED1_Neg();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW1 pressed\r\n");
+#if PL_CONFIG_BOARD_IS_REMOTE
     RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_RIGHT, RNETA_GetDestAddr(), RPHY_PACKET_FLAGS_REQ_ACK);
+#endif
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
-	#if PL_CONFIG_HAS_LINE_FOLLOW
-    if (!LineTaskRun){
-    	LineTaskRun = true;
-    	state = STOP;
-    } else {
-    	LineTaskRun = false;
-    	state = STOP_TAST;
-    }
-	#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=2
@@ -242,60 +245,70 @@ void APP_Start(void) {
 
 #if PL_LOCAL_CONFIG_BOARD_IS_ROBO
 static bool stopTurn(){
-	return state=STOP_TAST;
+	return state=STOP;
 }
 
 static void LineTestatTask(void *param){
 	bool secondRun;
+
 	for(;;) {
 		switch(state){
-		case STOP_TAST:
-			if(LF_IsFollowing()){
-					LF_StopFollowing();
-			}
-			break;
 
 		case STOP:
 			if(LF_IsFollowing()){
-			SHELL_SendString("state: STOP\r\n");
 			LF_StopFollowing();
 			}
-			if(REF_GetLineKind()==REF_LINE_STRAIGHT){
-				state = LINE_FOLLOW_INIT;
-			}
-			break;
-		case LINE_FOLLOW_INIT:
-			if (!LF_IsFollowing()) {
-				SHELL_SendString("state: LINE_FOLLOW_INIT\r\n");
-				LF_StartFollowing();
-				state = LINE_FOLLOW_RUN;
+			if(DRV_GetMode() == DRV_MODE_SPEED){
+				//state = MANUAL_DRIVE;
+				// send A
+				buf[0] = '9';
+				buf[1] = 'A';
+				RAPP_SendPayloadDataBlock(buf, sizeof(buf), RAPP_MSG_TYPE_LAPPOINT, 0x12, RPHY_PACKET_FLAGS_REQ_ACK);
 			}
 			break;
 
-		case LINE_FOLLOW_RUN:
-			if(REF_GetLineKind()==REF_LINE_FULL){
-				state = STOP;
-				}
-			if(REF_GetLineKind()==REF_LINE_NONE){
+		case MANUAL_DRIVE:
+			if (REF_GetLineKind()==REF_LINE_FULL) {
+				// send B
+				buf[0] = '9';
+				buf[1] = 'B';
+				RAPP_SendPayloadDataBlock(buf, sizeof(buf), RAPP_MSG_TYPE_LAPPOINT, 0x12, RPHY_PACKET_FLAGS_REQ_ACK);
+
 				state = TURN;
-				}
+			}
 			break;
 
 		case TURN:
 			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
 			FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {
-				SHELL_SendString("state: TURN\r\n");
-				state = LINE_FOLLOW_INIT;
+				state = LINE_FOLLOW;
 			}
 			break;
+
+		case LINE_FOLLOW:
+			if(REF_GetLineKind() == REF_LINE_STRAIGHT){
+				LF_StartFollowing();
+			}
+			if(REF_GetLineKind()==REF_LINE_FULL){
+				// send C
+				buf[0] = '9';
+				buf[1] = 'C';
+				RAPP_SendPayloadDataBlock(buf, sizeof(buf), RAPP_MSG_TYPE_LAPPOINT, 0x12, RPHY_PACKET_FLAGS_REQ_ACK);
+
+				state = STOP;
+			}
+			if(REF_GetLineKind()==REF_LINE_NONE){
+						state = TURN;
+						}
+					break;
 		}
 		FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 	}
 }
 
 void InitTestat(void) {
-	state = STOP_TAST;
+	state = STOP;
 	  if(FRTOS1_xTaskCreate(LineTestatTask, (uint8_t *)"LineTestatTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS){
 	    	      		for(;;){}
 	    }

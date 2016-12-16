@@ -18,11 +18,10 @@ void APP_EventHandler(EVNT_Handle event);
 #endif
 
 typedef enum{
-	STOP_TAST = 0,
-	STOP,
-	LINE_FOLLOW_INIT,
-	LINE_FOLLOW_RUN,
-	TURN
+	STOP = 0,
+	MANUAL_DRIVE,
+	TURN,
+	LINE_FOLLOW
 } State_Line;
 
 

@@ -27,6 +27,7 @@
 #endif
 #if PL_CONFIG_BOARD_IS_ROBO
 #include "Drive.h"
+#include "LineFollow.h"
 #endif
 
 static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
@@ -36,6 +37,10 @@ typedef enum {
   RNETA_POWERUP, /* powered up */
   RNETA_TX_RX,
 } RNETA_State;
+
+static int32_t speedLeft = 0;
+static int32_t speedRight = 0;
+static unsigned char buf[2];
 
 static RNETA_State appState = RNETA_NONE;
 
@@ -73,23 +78,51 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
 #if PL_CONFIG_BOARD_IS_ROBO
     case RAPP_MSG_TYPE_FORWARD:
     	DRV_SetMode(DRV_MODE_SPEED);
-    	return DRV_SetSpeed(1500,1500);
+    	speedLeft += 750;
+    	speedRight += 750;
+    	return DRV_SetSpeed(speedLeft,speedRight);
 
     case RAPP_MSG_TYPE_BACKWARD:
     	DRV_SetMode(DRV_MODE_SPEED);
-    	return DRV_SetSpeed(-1500,-1500);
+    	speedLeft -= 750;
+    	speedRight -= 750;
+    	return DRV_SetSpeed(speedLeft,speedRight);
 
     case RAPP_MSG_TYPE_STOP:
     	DRV_SetMode(DRV_MODE_STOP);
+    	speedLeft = 0;
+    	speedRight = 0;
+    	LF_StopFollowing();
     	return DRV_SetSpeed(0,0);
 
     case RAPP_MSG_TYPE_LEFT:
     	DRV_SetMode(DRV_MODE_SPEED);
+    	speedLeft = 0;
+    	speedRight = 0;
     	return DRV_SetSpeed(-500,500);
 
     case RAPP_MSG_TYPE_RIGHT:
     	DRV_SetMode(DRV_MODE_SPEED);
+    	speedLeft = 0;
+    	speedRight = 0;
     	return DRV_SetSpeed(500,-500);
+
+    case RAPP_MSG_TYPE_LEFTLONG:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	speedLeft = 0;
+    	speedRight = 0;
+    	return DRV_SetSpeed(500,1000);
+
+    case RAPP_MSG_TYPE_RIGHTLONG:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	speedLeft = 0;
+    	speedRight = 0;
+    	return DRV_SetSpeed(1000,500);
+
+    case RAPP_MSG_TYPE_TEST:
+    	buf[0] = '9';
+    	buf[1] = 'B';
+    	return RAPP_SendPayloadDataBlock(buf, sizeof(buf), RAPP_MSG_TYPE_LAPPOINT, 0x12, RPHY_PACKET_FLAGS_REQ_ACK);
 
 #endif
     default: /*! \todo Handle your own messages here */
@@ -159,7 +192,7 @@ static void RadioTask(void *pvParameters) {
   configASSERT(portTICK_PERIOD_MS<=2); /* otherwise  vTaskDelay() below will not delay and starve lower prio tasks */
   for(;;) {
     Process(); /* process state machine and radio in/out queues */
-    FRTOS1_vTaskDelay(2/portTICK_PERIOD_MS); /* \todo This will only work properly if having a <= 2ms tick period */
+    FRTOS1_vTaskDelay(1/portTICK_PERIOD_MS); /* \todo This will only work properly if having a <= 2ms tick period */
   }
 }
 
