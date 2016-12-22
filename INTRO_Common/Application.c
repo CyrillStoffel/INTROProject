@@ -62,6 +62,7 @@
 
 static bool LineTaskRun;
 static State_Line state;
+static bool startCmd;
 static unsigned char buf[2];
 
 #if PL_CONFIG_HAS_EVENTS
@@ -257,6 +258,10 @@ static bool stopTurn(){
 	return state=STOP;
 }
 
+void startWithButton(void){
+	startCmd = true;
+}
+
 static void LineTestatTask(void *param){
 	bool secondRun;
 
@@ -268,7 +273,7 @@ static void LineTestatTask(void *param){
 			LF_StopFollowing();
 			}
 			if(DRV_GetMode() == DRV_MODE_SPEED){
-				//state = MANUAL_DRIVE;
+				state = MANUAL_DRIVE;
 				// send A
 				buf[0] = '9';
 				buf[1] = 'A';
@@ -277,7 +282,7 @@ static void LineTestatTask(void *param){
 			break;
 
 		case MANUAL_DRIVE:
-			if (REF_GetLineKind()==REF_LINE_FULL) {
+			if (REF_GetLineKind()==REF_LINE_FULL && startCmd) {
 				// send B
 				buf[0] = '9';
 				buf[1] = 'B';
@@ -288,6 +293,7 @@ static void LineTestatTask(void *param){
 			break;
 
 		case TURN:
+			startCmd = false;
 			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
 			FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {

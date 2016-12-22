@@ -29,6 +29,7 @@ typedef enum {
   RAPP_MSG_TYPE_LEFTLONG = 0x60,
   RAPP_MSG_TYPE_RIGHTLONG = 0x61,
   RAPP_MSG_TYPE_TEST = 0x62,
+  RAPP_MSG_TYPE_START = 0x63,
   RAPP_MSG_TYPE_LAPPOINT = 0xAC,
   /* \todo extend with your own messages */
 } RAPP_MSG_Type;
