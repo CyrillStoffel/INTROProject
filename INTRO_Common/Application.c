@@ -135,6 +135,7 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=6
   case EVNT_SW6_PRESSED:
     SHELL_SendString("SW6 pressed\r\n");
+    RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_START, RNETA_GetDestAddr(), 0);
     LED1_Neg();
     break;
   #endif
@@ -268,7 +269,8 @@ static void LineTestatTask(void *param){
 			LF_StopFollowing();
 			}
 			if(DRV_GetMode() == DRV_MODE_SPEED){
-				//state = MANUAL_DRIVE;
+				//
+				state = MANUAL_DRIVE;
 				// send A
 				buf[0] = '9';
 				buf[1] = 'A';
