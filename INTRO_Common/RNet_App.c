@@ -10,6 +10,7 @@
 #include "Platform.h"
 #if PL_CONFIG_HAS_RADIO
 #include "RNetConf.h"
+#endif
 #if RNET_CONFIG_REMOTE_STDIO
   #include "RStdIO.h"
 #endif
@@ -73,7 +74,6 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
 #endif
       UTIL1_strcat(buf, sizeof(buf), (unsigned char*)"\r\n");
       CLS1_SendStr(buf, io->stdOut);
-#endif /* PL_HAS_SHELL */      
       return ERR_OK;
 #if PL_CONFIG_BOARD_IS_ROBO
     case RAPP_MSG_TYPE_FORWARD:
@@ -192,6 +192,7 @@ static void Init(void) {
   if (RAPP_SetThisNodeAddr(0x04)!=ERR_OK) { /* set a default address */
       //APP_DebugPrint((unsigned char*)"ERR: Failed setting node address\r\n");
     }
+#endif
 }
 
 static void RadioTask(void *pvParameters) {
