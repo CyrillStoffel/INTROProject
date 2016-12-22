@@ -27,6 +27,8 @@ typedef enum{
 
 static bool stopTurn(void);
 
+void startWithButton(void);
+
 static void LineTestatTask(void *param);
 
 void InitTestat(void);

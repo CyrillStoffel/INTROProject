@@ -124,6 +124,10 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
     	buf[1] = 'B';
     	return RAPP_SendPayloadDataBlock(buf, sizeof(buf), RAPP_MSG_TYPE_LAPPOINT, 0x12, RPHY_PACKET_FLAGS_REQ_ACK);
 
+    case RAPP_MSG_TYPE_START:
+    	startWithButton();
+    	break;
+
 #endif
     default: /*! \todo Handle your own messages here */
       break;
