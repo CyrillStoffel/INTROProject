@@ -63,6 +63,7 @@
 static bool LineTaskRun;
 static State_Line state;
 static unsigned char buf[2];
+static bool startcmd;
 
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
@@ -97,8 +98,10 @@ void APP_EventHandler(EVNT_Handle event) {
     break;
   case EVNT_SW1_LPRESSED:
     SHELL_SendString("SW1 long pressed\r\n");
+#if PL_CONFIG_BOARD_IS_REMOTE
     RAPP_SendPayloadDataBlock(NULL, sizeof(NULL), RAPP_MSG_TYPE_RIGHTLONG, RNETA_GetDestAddr(), 0);
     break;
+#endif
   #endif
   #if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
@@ -258,6 +261,10 @@ static bool stopTurn(){
 	return state=STOP;
 }
 
+void startWithButton(void){
+	startcmd = true;
+}
+
 static void LineTestatTask(void *param){
 	bool secondRun;
 
@@ -279,7 +286,7 @@ static void LineTestatTask(void *param){
 			break;
 
 		case MANUAL_DRIVE:
-			if (REF_GetLineKind()==REF_LINE_FULL) {
+			if (REF_GetLineKind()==REF_LINE_FULL && startcmd) {
 				// send B
 				buf[0] = '9';
 				buf[1] = 'B';
@@ -290,6 +297,7 @@ static void LineTestatTask(void *param){
 			break;
 
 		case TURN:
+			startcmd = false;
 			TURN_TurnAngle(180, (TURN_StopFct)stopTurn);
 			FRTOS1_vTaskDelay(100/portTICK_PERIOD_MS);
 			if ((TACHO_GetSpeed(true)==0)&&(TACHO_GetSpeed(false)==0)) {
